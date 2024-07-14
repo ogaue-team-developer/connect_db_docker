@@ -1,0 +1,20 @@
+1. Dockerのインストール
+2. zipファイルをダウンロード
+3. zipファイルを任意の場所に解凍
+4. 解凍したディレクトリ内でコマンド実行 「docker compose up -d」
+5. コマンド実行 「docker exec -it postgres psql -U docker -d connect_db」
+6. パスワードを求められた場合「docker」を入力
+Docker 
+# 「\d」でテーブルを確認
+# 「select * from test;」でレコード確認
+
+
+メモ. データベースの初期データ投入はsqlファイル変更した際は一度コンテナ削除して、volume削除する必要あり
+
+docker ps -a
+docker stop コンテナ名
+docker rm コンテナ名
+
+docker volume ls
+docker volume rm ボリューム名
+docker volume rm $(docker volume ls -qf dangling=true)

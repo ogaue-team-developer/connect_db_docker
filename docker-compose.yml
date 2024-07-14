@@ -1,0 +1,19 @@
+# docker-composeで使用するバージョンを定義
+ version: '3.9'
+
+# サービス(コンテナ)の定義
+ services:
+   # DBの定義
+   postgresdb:
+     image: postgres:13
+     container_name: postgres
+     environment:
+       POSTGRES_USER: docker
+       POSTGRES_PASSWORD: docker
+       POSTGRES_DB: connect_db
+       TZ: 'Asia/Tokyo'
+     volumes:
+       - ./db/init:/docker-entrypoint-initdb.d
+     ports:
+       - "5432:5432"
+    
